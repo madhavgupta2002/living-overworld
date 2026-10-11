@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#121a24">
+  <title>Living Overworld</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <div class="eyebrow">A WORLD THAT LISTENS</div>
+      <h1>Living Overworld <span>✦</span></h1>
+    </div>
+    <button id="reset" class="ghost">New world</button>
+  </header>
+
+  <main>
+    <section class="game-panel">
+      <div class="world-bar">
+        <strong id="world-name">Moonberry Village</strong>
+        <span id="stats">0 moonstones</span>
+      </div>
+
+      <div class="screen">
+        <canvas
+          id="game"
+          width="480"
+          height="320"
+          tabindex="0"
+          aria-label="Walkable pixel-art world. Use arrow keys or WASD to walk and E to interact."
+        ></canvas>
+        <div id="toast" role="status" aria-live="polite" hidden></div>
+        <div id="working" hidden><span class="dot"></span> Imagining changes… keep exploring</div>
+      </div>
+
+      <div class="game-bottom">
+        <p><kbd>WASD</kbd> / <kbd>↑↓←→</kbd> walk · <kbd>E</kbd> interact · click game to focus</p>
+        <div class="touch-controls" aria-label="Touch controls">
+          <div class="dpad">
+            <button data-key="ArrowUp" aria-label="Walk up">▲</button>
+            <button data-key="ArrowLeft" aria-label="Walk left">◀</button>
+            <button data-key="ArrowDown" aria-label="Walk down">▼</button>
+            <button data-key="ArrowRight" aria-label="Walk right">▶</button>
+          </div>
+          <button id="interact">Talk / Open</button>
+        </div>
+      </div>
+    </section>
+
+    <aside>
+      <div class="panel-heading">
+        <span class="spark">✧</span>
+        <div>
+          <h2>Shape this world</h2>
+          <p>Describe a change. Keep playing.</p>
+        </div>
+      </div>
+
+      <div id="log" role="log" aria-live="polite"></div>
+
+      <div class="suggestions">
+        <button data-prompt="Make the village a snowy winter wonderland with snow falling.">Snowy village</button>
+        <button data-prompt="Build a small pond with a path bridge and flowers near me. Remove obstacles where needed.">Pond + bridge</button>
+        <button data-prompt="Add three friendly colorful creatures near me, each with a unique name and funny dialogue.">New friends</button>
+        <button data-prompt="Turn the world into an autumn forest at dusk, with lanterns along the main path.">Autumn forest</button>
+      </div>
+
+      <form id="edit-form">
+        <label for="prompt">Your idea</label>
+        <textarea
+          id="prompt"
+          rows="3"
+          maxlength="1500"
+          placeholder="Add a lake east of me, with a bridge and a friendly blue creature…"
+          required
+        ></textarea>
+        <button id="submit" type="submit">✦ Make it real</button>
+      </form>
+
+      <p class="fine-print">
+        Enter to send · Shift+Enter for a new line<br>
+        Saved in this browser. AI edits use your server's Bedrock account.
+      </p>
+    </aside>
+  </main>
+
+  <script type="module" src="/game.js"></script>
+</body>
+</html>
